@@ -1,14 +1,16 @@
+
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
-export class CreateCommentDto {
+
+export class CreateArticaleDto {
     @IsString()
     @IsNotEmpty()
-    comment: string;
+    title: string;
 
-    @IsNumber()
+    @IsString()
     @IsNotEmpty()
-    user: number;
+    body: string;
 
-    @IsNumber()
     @IsNotEmpty()
-    article: number;
+    @IsNumber()
+    author: number;
 }

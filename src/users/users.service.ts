@@ -15,15 +15,14 @@ export class UsersService {
 
 
   async create(createUserDto: CreateUserDto) {
-    //need to handel errors
     const isExist = await this.usersRepository.findOne({ name: createUserDto.name });
     if (isExist) return "user name already exist";
     await this.usersRepository.insert(createUserDto);
-    return true;
+    return;
   }
 
   findAll(): Promise<User[]> {
-    return this.usersRepository.find();
+    return this.usersRepository.find({});
   }
 
   findOne(id: number) {
