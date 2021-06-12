@@ -4,7 +4,7 @@ import { ArticlesController } from './articles.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Article } from './entities/article.entity';
 import { UsersModule } from '../users/users.module';
-import { CommentsModule } from 'src/comments/comments.module';
+import { CommentsModule } from '../comments/comments.module';
 
 
 @Module({

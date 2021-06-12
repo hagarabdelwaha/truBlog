@@ -1,9 +1,10 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Article } from '../../articles/entities/article.entity';
-import { Comment } from 'src/comments/entities/comment.entity';
+import { Comment } from '../../comments/entities/comment.entity';
 
 @Entity()
 export class User {
+
     @PrimaryGeneratedColumn()
     id: number;
 
