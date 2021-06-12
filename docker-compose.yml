@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+  database:
+    container_name: database
+    image: mariadb
+    restart: always
+    networks:
+      - blog
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: blog
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+    expose:
+      - 3306
+    volumes:
+      - db_data:/var/lib/mysql/data
+
+  backend:
+    container_name: backend
+    build:
+      context: .
+      target: production
+    ports:
+      - 3000:3000
+    command: npm run start
+    networks:
+      - blog
+    depends_on:
+      - database
+    
+networks:
+  blog:
+volumes:
+  db_data:
