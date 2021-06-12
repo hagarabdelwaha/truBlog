@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateArticleDto } from './dto/create-article.dto';
 import { UpdateArticleDto } from './dto/update-article.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -18,7 +18,7 @@ export class ArticlesService {
 
   async create(createArticleDto: CreateArticleDto) {
     const authorExist = await this.userService.findOne(createArticleDto.author);
-    if (!authorExist) throw new Error('invalid author id ');
+    if (!authorExist) throw new HttpException('invalid author id ', HttpStatus.BAD_REQUEST);
     await this.articleRepository.insert(createArticleDto);
     return;
   }
