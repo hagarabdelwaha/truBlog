@@ -4,7 +4,7 @@ import { UpdateCommentDto } from './dto/update-comment.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UsersService } from 'src/users/users.service';
-import { ArticalesService } from 'src/articales/articales.service';
+import { ArticlesService } from 'src/articles/articles.service';
 import { Comment } from './entities/comment.entity';
 @Injectable()
 export class CommentsService {
@@ -13,13 +13,13 @@ export class CommentsService {
     @InjectRepository(Comment)
     private commentRepository: Repository<Comment>,
     private userService: UsersService,
-    private articaleService: ArticalesService,
+    private articleService: ArticlesService,
 
   ) { }
   async create(createCommentDto: CreateCommentDto) {
     const userExist = await this.userService.findOne(createCommentDto.user);
     if (!userExist) return 'invalid user id';
-    const articleExist = await this.articaleService.findOne(createCommentDto.article);
+    const articleExist = await this.articleService.findOne(createCommentDto.article);
     if (!articleExist) return 'invalid article id';
     await this.commentRepository.insert(createCommentDto);
     return;

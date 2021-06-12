@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { Articale } from '../../articales/entities/articale.entity';
+import { Article } from '../../articles/entities/article.entity';
 import { Comment } from 'src/comments/entities/comment.entity';
 
 @Entity()
@@ -13,8 +13,8 @@ export class User {
     @Column()
     jobTitle: string;
 
-    @OneToMany(type => Articale, articale => articale.author)
-    articles: Articale[];
+    @OneToMany(type => Article, article => article.author)
+    articles: Article[];
 
     @OneToMany(type => Comment, comment => comment.user)
     comments: Comment[];

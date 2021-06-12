@@ -3,10 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
-// import { User } from './users/entities/user.entity';
-// import { Articale } from './articales/entities/articale.entity';
 import { CommentsModule } from './comments/comments.module';
-import { ArticalesModule } from './articales/articales.module';
+import { ArticlesModule } from './articles/articles.module';
 
 @Module({
   imports: [
@@ -17,13 +15,12 @@ import { ArticalesModule } from './articales/articales.module';
       username: 'hagar',
       password: 'rootpass123',
       database: 'blog',
-      // entities: [User, Articale],
       autoLoadEntities: true,
       synchronize: true,
     }),
     UsersModule,
     CommentsModule,
-    ArticalesModule,
+    ArticlesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToOne } from 'typeorm';
 import { User } from '../../users/entities/user.entity';
-import { Articale } from '../../articales/entities/articale.entity';
+import { Article } from '../../articles/entities/article.entity';
 
 @Entity()
 export class Comment {
@@ -14,7 +14,7 @@ export class Comment {
     @JoinColumn()
     user: User["id"];
 
-    @ManyToOne(type => Articale)
+    @ManyToOne(type => Article)
     @JoinColumn()
-    article: Articale["id"];
+    article: Article["id"];
 }
