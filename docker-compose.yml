@@ -21,7 +21,10 @@ services:
     container_name: backend
     build:
       context: .
-      target: production
+      target: development
+    environment: 
+      DATABASE_URL: mysql://mysql:mysql@database:3306/blog
+      NODE_ENV: development
     ports:
       - 3000:3000
     command: npm run start

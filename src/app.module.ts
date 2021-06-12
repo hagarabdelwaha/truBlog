@@ -10,11 +10,12 @@ import { ArticlesModule } from './articles/articles.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'hagar',
-      password: 'rootpass123',
-      database: 'blog',
+      url: process.env.DATABASE_URL,
+      // host: 'localhost',
+      // port: 3306,
+      // username: 'mysql',
+      // password: 'mysql',
+      // database: 'blog',
       autoLoadEntities: true,
       synchronize: true,
     }),
